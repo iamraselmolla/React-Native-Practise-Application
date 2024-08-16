@@ -1,6 +1,8 @@
 
 import { useState } from 'react';
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Button, FlatList, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import GoalItem from './components/GoalItem';
+import GoalInput from './components/GoalInput';
 
 export default function App() {
   const [goalInput, setGoalInput] = useState('');
@@ -11,21 +13,20 @@ export default function App() {
   };
 
   const addGoalHandler = () => {
-    setGoals(currentGoals => [...currentGoals, goalInput]);
-    setGoalInput('');
+    setGoals(currentGoals => [...currentGoals, {
+      text: goalInput,
+      key: Math.random().toString()
+    }]);
   };
   return (
     <View style={styles.appContainer}>
-      <View style={styles.inputContainer}>
-        <TextInput onChangeText={goalInputHandler} style={styles.inputStyle} placeholder='Goal' />
-        <View>
-          <Button onPress={addGoalHandler} color={'#b180f0'} style title='Add Goal...' />
-        </View>
-      </View>
-      <View style={styles.goalContainer}>
-        <Text style={{ fontSize: 20 }}>List of Goals</Text>
-        {goals.map((goal) => <Text style={styles.goalItem} key={goal} >{goal}</Text>)}
-      </View>
+      <GoalInput goalInputHandler={goalInputHandler} addGoalHandler={addGoalHandler} />
+
+      <FlatList data={goals} renderItem={item => {
+        return <GoalItem item={item.item} />
+      }} alwaysBounceVertical={false} />
+
+
     </View>
   );
 }
