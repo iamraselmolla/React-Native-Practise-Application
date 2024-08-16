@@ -18,12 +18,19 @@ export default function App() {
       key: Math.random().toString()
     }]);
   };
+  const deleteGoalHandler = (key) => {
+    console.log(key)
+    return;
+    setGoals(currentGoals => {
+      return currentGoals.filter((goal) => goal.key !== key)
+    })
+  }
   return (
     <View style={styles.appContainer}>
       <GoalInput goalInputHandler={goalInputHandler} addGoalHandler={addGoalHandler} />
 
       <FlatList data={goals} renderItem={item => {
-        return <GoalItem item={item.item} />
+        return <GoalItem deleteGoalHandler={deleteGoalHandler} item={item.item} />
       }} alwaysBounceVertical={false} />
 
 

@@ -1,6 +1,9 @@
 import { Button, StyleSheet, TextInput, View } from "react-native";
 
-const GoalInput = ({ addGoalHandler, goalInputHandler }) => {
+const GoalInput = ({ addGoalHandler, goalInputHandler
+
+    
+ }) => {
     return (
         <View style={styles.inputContainer}>
             <TextInput onChangeText={goalInputHandler} style={styles.inputStyle} placeholder='Goal' />
