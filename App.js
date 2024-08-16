@@ -7,11 +7,11 @@ export default function App() {
       <View style={styles.inputContainer}>
         <TextInput style={styles.inputStyle} placeholder='Goal' />
         <View>
-          <Button title='Add Goal' />
+          <Button color={'#b180f0'} style title='Add Goal...' />
         </View>
       </View>
       <View>
-        <Text>List of Goals</Text>
+        <Text style={{ fontSize: 20 }}>List of Goals</Text>
       </View>
     </View>
   );
@@ -19,19 +19,22 @@ export default function App() {
 
 const styles = StyleSheet.create({
   appContainer: {
-    padding: 50
+    paddingTop: 50,
+    paddingLeft: 16,
+    paddingRight: 16
   },
   inputStyle: {
     borderWidth: 1,
     borderColor: '#cccccc',
-    width: '80%',
-    marginRight: 8,
-    padding: 8,
-    marginBottom: 10
+    width: '75%',
+    padding: 3,
+    marginBottom: 10,
+    paddingLeft: 10
   },
   inputContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
 
-  }
+  },
+
 });
